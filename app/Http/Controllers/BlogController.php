@@ -68,7 +68,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $data['blog'] = Blog::where('id', $blog)->first();
+        return view('backends.blogs.update', $data);
     }
 
     /**
