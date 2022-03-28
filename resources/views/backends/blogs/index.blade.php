@@ -19,6 +19,7 @@
                                 <p class="mt-4 text-gray-600">{{ $blog->discription }}</p>
                                 <button
                                     class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">MORE</button>
+                                    <a href="{{route('blog.edit',$blog->id)}}" class="">Edit</a>
                             </div>
                         </div>
                     </div>
