@@ -20,6 +20,7 @@
                                 <button
                                     class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">MORE</button>
                                     <a href="{{route('blog.edit',$blog->id)}}" class="">Edit</a>
+                                    <a href="{{route('blog.copypost',$blog->id)}}" class="">Copy</a>
                             </div>
                         </div>
                     </div>

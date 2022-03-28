@@ -44,8 +44,7 @@ class BlogController extends Controller
         ]);
         if (empty($createblog)) {
             return back()->with('ERROR', "Fill Kor age");
-        }
-        
+        }        
         return redirect()->route('blog.index')->with('SUCCESS', "Valo Korsesis");
     }
 
@@ -81,7 +80,14 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $upblog = $blog;
+        $upblog->title = $request->title;
+        $upblog->discription = $request->discription;
+        $upblog->images = $request->file('images')->store('images');       
+        if ($upblog->update()){
+            return redirect()->route('blog.index')->with('SUCCESS', "Valo Korsesis");
+        }
+        return back()->with('ERROR', "Fill Kor age");
     }
 
     /**
@@ -93,5 +99,19 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+    public function copypost($copypost)
+    {
+        $blogpostcopy = Blog::where('id',$copypost)->first();
+        $createblog = Blog::create([
+            'title' => $blogpostcopy->title,
+            'discription' => $blogpostcopy->discription,
+            'images' => $blogpostcopy->images,
+        ]);
+        if (empty($createblog)) {
+            return back()->with('ERROR', "Fill Kor age");
+        }        
+        return redirect()->route('blog.index')->with('SUCCESS', "Valo Korsesis");
+        
     }
 }
