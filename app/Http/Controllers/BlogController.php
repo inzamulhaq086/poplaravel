@@ -98,8 +98,13 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if ($blog->delete()){
+            return redirect()->route('blog.index')->with('SUCCESS', "Valo Korsesis");
+        }
+        return back()->with('ERROR', "Pari na");
+
     }
+
     public function copypost($copypost)
     {
         $blogpostcopy = Blog::where('id',$copypost)->first();

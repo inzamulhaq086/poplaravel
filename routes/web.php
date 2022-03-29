@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard',DashboardController::class)->middleware(['auth'])->name('dashboard');
-Route::resource('/blog',BlogController::class)->middleware(['auth']);
+Route::resource('/blog',BlogController::class)->except('show')->middleware(['auth']); //expect diye  function off kore
 Route::get('/copypost/{id}',[BlogController::class,'copypost'])->middleware(['auth'])->name('blog.copypost');
 
 require __DIR__.'/auth.php';

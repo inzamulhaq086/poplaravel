@@ -17,22 +17,23 @@
                             <div class="mt-4 text-green-600 text-center">
                                 <h1 class="text-xl font-bold">{{ $blog->title }}</h1>
                                 <p class="mt-4 text-gray-600">{{ $blog->discription }}</p>
-                                <button
-                                    class="mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200">MORE</button>
-                                    <a href="{{route('blog.edit',$blog->id)}}" class="">Edit</a>
-                                    <a href="{{route('blog.copypost',$blog->id)}}" class="">Copy</a>
+                                <div class="py-4"><a href="{{ route('blog.destroy', $blog->id) }}"
+                                    class="delete-row mt-8 mb-4 py-2 px-14 rounded-full bg-green-600 text-white tracking-widest hover:bg-green-500 transition duration-200" data-confirm="Are You Sure To Delete This?">Delete</a></div>
+                                <div class=""><a href="{{ route('blog.edit', $blog->id) }}" class="">Edit</a></div>
+                                <div class=""><a href="{{ route('blog.copypost', $blog->id) }}" class="">Copy</a></div>
+
                             </div>
                         </div>
                     </div>
                 @empty
                     <div class="">No Data Found</div>
-                @endforelse                
+                @endforelse
             </div>
             <div class="flex justify-center py-12">
-              {{ $blogs->links() }}
-          </div>
-          <h4 class="text-center font-thin text-xl mt-14">Create Your Own Blog : <a
-                  href="{{ route('blog.create') }}" class="underline text-gray-600 cursor-pointer">Click Here</a>
-          </h4>
+                {{ $blogs->links() }}
+            </div>
+            <h4 class="text-center font-thin text-xl mt-14">Create Your Own Blog : <a href="{{ route('blog.create') }}"
+                    class="underline text-gray-600 cursor-pointer">Click Here</a>
+            </h4>
     </section>
 @endsection
